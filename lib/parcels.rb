@@ -12,6 +12,13 @@ class Parcels
     @length * @height * @width
   end
   define_method(:cost_to_ship)  do
-    @weight * @speed * @distance * 1.5
+    if self.volume < 10
+      @weight * @speed * @distance * 1
+    else
+      @weight * @speed * @distance * 1.5
+    end
+  end
+  define_method(:cost_to_wrap)  do
+    0.5 * (@length * @width + @width * @height + @length * @height)
   end
 end
